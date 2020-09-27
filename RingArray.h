@@ -18,7 +18,24 @@ public:
      * array, the number of elements stored there increases by one.
      * \param value the element that must be inserted.
      */
-  void add(T value);
+  void add(T value)
+  {
+    if (this->_size == 0)
+    {
+      this->_first = 0;
+      this->_last = 0;
+      this->buf[0] = value;
+      this->_size++;
+    }
+    else if (this->_size > 0 && this->_size < N)
+    {
+      this->_last = this->_size;
+      this->buf[this->_size] = value;
+      this->_size++;
+    }
+    else
+      throw "Erro: anel cheio."
+  }
 
   /**
      * \brief This method returns the oldest element stored in the array. After
@@ -40,10 +57,10 @@ public:
   bool isEmpty() const;
 
 private:
-  unsigned _first; ///< The index of the oldest element in the array.
-  unsigned _last;  ///< The index of the next empty spot in the array.
-  unsigned _size = 0;  ///< The size of the array
-  T buf[N];        ///< The buffer that stores the data in the array.
+  unsigned _first;    ///< The index of the oldest element in the array.
+  unsigned _last;     ///< The index of the next empty spot in the array.
+  unsigned _size = 0; ///< The size of the array
+  T buf[N];           ///< The buffer that stores the data in the array.
 };
 
 #endif
