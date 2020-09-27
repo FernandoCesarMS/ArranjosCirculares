@@ -49,12 +49,22 @@ public:
      * This method is true if the array contains N-1 elements.
      * \return true if the array contains N-1 elements.
      */
-  bool isFull() const;
+  bool isFull() const{
+    if (this->_size >= N-1)
+      return true;
+    else
+      return false;
+  }
   /**
      * This method is true if the array contains zero elements.
      * \return true if the array is empty.
      */
-  bool isEmpty() const;
+  bool isEmpty() const{
+    if (this->_size == 0)
+      return true;
+    else
+      return false;
+  }
 
 private:
   unsigned _first;    ///< The index of the oldest element in the array.
