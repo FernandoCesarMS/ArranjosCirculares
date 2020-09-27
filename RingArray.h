@@ -18,24 +18,7 @@ public:
      * array, the number of elements stored there increases by one.
      * \param value the element that must be inserted.
      */
-  void add(T value)
-  {
-    if (this->_size == 0)
-    {
-      this->_first = 0;
-      this->_last = 0;
-      this->buf[0] = value;
-      this->_size++;
-    }
-    else if (this->_size > 0 && this->_size < N)
-    {
-      this->_last = this->_size;
-      this->buf[this->_size] = value;
-      this->_size++;
-    }
-    else
-      throw "Erro: anel cheio."
-  }
+  void add(T value);
 
   /**
      * \brief This method returns the oldest element stored in the array. After
@@ -43,34 +26,18 @@ public:
      * number of elements in the array decreases by one. If we try to retrieve
      * an element from an empty array, then this method aborts the program.
      */
-  T get(){
-    T oldest = this->_first;
-    this->_size--;
-    for (int i=0;i<this->_size;i++)
-      this->buf[i] = this->buf[i+1];
-    return oldest;
-  }
+  T get();
 
   /**
      * This method is true if the array contains N-1 elements.
      * \return true if the array contains N-1 elements.
      */
-  bool isFull() const{
-    if (this->_size >= N-1)
-      return true;
-    else
-      return false;
-  }
+  bool isFull() const;
   /**
      * This method is true if the array contains zero elements.
      * \return true if the array is empty.
      */
-  bool isEmpty() const{
-    if (this->_size == 0)
-      return true;
-    else
-      return false;
-  }
+  bool isEmpty() const;
 
 private:
   unsigned _first;    ///< The index of the oldest element in the array.
