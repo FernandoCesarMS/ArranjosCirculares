@@ -43,7 +43,13 @@ public:
      * number of elements in the array decreases by one. If we try to retrieve
      * an element from an empty array, then this method aborts the program.
      */
-  T get();
+  T get(){
+    T oldest = this->_first;
+    this->_size--;
+    for (int i=0;i<this->_size;i++)
+      this->buf[i] = this->buf[i+1];
+    return oldest;
+  }
 
   /**
      * This method is true if the array contains N-1 elements.
